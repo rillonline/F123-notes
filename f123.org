@@ -1,0 +1,1075 @@
+
+
+* Tasks
+** TODO 
+   [2017-05-06 Sat]
+   [[file:~/.emacs.d/lisp/capture-prepare.el][file:~/.emacs.d/lisp/capture-prepare.el]]
+
+** Sat May  6 15:46:23 2017 (F123 Notes)
+
+F123 Notes
+** TODO 
+   [2017-05-06 Sat]
+   [[file:~/.emacs.d/lisp/capture-prepare.el::(define-key%20global-map%20"\C-cc"%20'org-capture)]]
+
++ Figure out how to use org-capture effectively.
++ At the moment, only the todo template is active.
++ I think I want a journal template for these notes.
++ org-capture replaces remember.
++ org-capture can be bound to c-cc.
++ It can also be bound to C-cb.
++ The org directory by default is hidden. I think this should be changed.
++ You exit by c-c c-c.
++ There is no need to save your notes after writing them.
++ Yyou can explicitly kill your notes if you don't want them saved.
+
+** I'm using remember to record these notes.
+** emacspeak-flyspell-correct has three possible values:
+
+  1. ido
+    2. popup
+      3. helm
+
+  None seems to have any effect.
+
+** Helm is a mode available through the aur. Raman has a prepare.el file for it but in its current state it doesn't work for me.
+** I'm investigating remember as a tool for our notes.
+** Sat May  6 15:55:40 2017 (t* m-x remember brings up the remember buffer. c-c c-c saves)
+** m-x remember brings up the remember buffer. c-c c-c saves and bruies the buffer. When you invoke remember again, you get a clean buffer.
+** Sat May  6 15:58:37 2017 ()
+
+
+
+/home/rill/.emacs.d/custom.el
+
+** Sat May  6 16:01:52 2017 (* Remember doesn't work with markdown. Sad.)
+** Remember doesn't work with markdown. Sad.
+** f123 info
+
+  - Should exist for a new user
+    - include description of raspberry pi and its care and feeding.
+      - how much emacs stuff to include?
+        - what sort of other reference data should we include?
+	  - how much is on the user's shoulders? If these aren't technical people, do they need lots of hand holding?
+
+/home/rill/.emacs.d/custom.el
+
+** TODO 
+   [2017-05-07 Sun]
+   [[file:~/OrgJournal.txt][file:~/OrgJournal.txt]]
+
+To research: I think org-journal is part of orgmode. The variables have probably not changed. Need to figure out how to create default settings.
+
+From https://www.emacswiki.org/emacs/OrgJournal/
+
+
+Adapted from
+[PersonalDiary](https://www.emacswiki.org/emacs/PersonalDiary){.local}
+
+Org-journal is a set of functions to maintain a simple personal diary /
+journal in Emacs.
+
+Feel free to use, modify and improve the code! — mtvoid, bastibe
+
+**Breaking Changes in 1.6**
+
+Key bindings have been changed from `C-c j`, `C-c f`, and `C-c b` to
+`C-c C-j`, `C-c C-f`, and `C-c C-b`, in order to comply with Emacs’
+conventions of reserving `C-c [a-zA-Z]` for user-defined keys.
+
+This file is also available from
+[marmalade](http://marmalade-repo.org){.url .http .outside},
+[melpa](http://melpa.milkbox.net){.url .http .outside} and
+[melpa-stable](http://melpa-stable.milkbox.net){.url .http .outside}
+under the name org-journal or on
+[GitHub](https://github.com/bastibe/emacs-journal){.url .http .outside}.
+After installing, add the line `(require 'org-journal)` to your /.emacs/
+or *init.el* to activate it. You may also want to specify the directory
+where your journal files will be saved. You can do this by setting the
+variable `org-journal-dir` (remember to add a trailing slash).
+`org-journal-dir` is also a customizable variable. The default value for
+`org-journal-dir` is `~/Documents/journal/`. Note: you have to customize
+`org-journal-dir` before you load `org-journal` as otherwise Emacs would
+not set the mode correctly.
+
+You can add all those calendar files to your org-agenda by adding
+`org-journal-dir` to `org-agenda-files` and setting
+`org-agenda-file-regexp` to include files with an all-numeric name
+(`` \\`[^.].*\\.org'\\|[0-9]+$ ``). That way, you can use org-agenda to
+search for *TODO* items or tagged items in your org-journal.
+
+Inside the journal directory, a separate file is created for each day
+with a journal entry, with a file name in the format *YYYYMMDD*. Each
+journal entry is an org-mode file that begins with a date entry on the
+top, followed by a entries for different times. Any subsequent entries
+on the same day are written as additional headings in the same file,
+with their own time. To start writing a journal entry, press `C-c C-j`.
+You can also open the current day’s entry without adding a new entry
+with `C-u C-c C-j`.
+
+You can customize the date and time formats using the variables
+`org-journal-date-format` and `org-journal-time-format`. If you do not
+want to use org headings and sub-headings for date and time entries,
+customize `org-journal-date-prefix` and `org-journal-time-prefix`. For
+example, you could set `org-journal-date-prefix` to `#+TITLE:` in order
+to begin every file with a title instead of a heading. If you want to
+store your journal entries with different file names, customize
+`org-journal-file-format`.
+
+You can browse through existing journal entries on disk via the
+calendar. All dates for which an entry is present are highlighted.
+Pressing `j` will open it up for viewing. Pressing `C-j` will open it
+for viewing, but not switch to it. Pressing `[` or `]` will select the
+date with the previous or next journal entry, respectively. Pressing
+`i j` will create a new entry for the chosen date.
+
+Quick summary:
+
+-   To create a new journal entry: `C-c C-j`
+-   To open today’s journal without creating a new entry: `C-u C-c C-j`
+
+In calendar view:
+
+-   `j` to view an entry
+-   `C-j` to view an entry but not switch to it
+-   `i j` to add a new entry
+-   `[` to go to previous entry
+-   `]` to go to next entry
+
+When viewing a journal entry:
+
+-   `C-c C-f` to view next entry
+-   `C-c C-b` to view previous entry
+
+A typical journal entry for a day would look like this:
+
+(it will actually look a lot nicer, depending on your org-mode settings)
+
+      * Tuesday, 06/04/13
+      ** 10:28 Company meeting
+      Endless discussions about projects. Not much progress
+
+      ** 11:33 Work on org-journal                                   :org-journal:
+      For the longest time, I wanted to have a cool diary app on my
+      computer. However, I simply lacked the right tool for that job. After
+      many hours of searching, I finally found PersonalDiary on EmacsWiki.
+      PersonalDiary is a very simple diary system based on the emacs
+      calendar. It works pretty well, but I don't really like that it only
+      uses unstructured text.
+
+      Thus, I spent the last two hours with making that diary use org-mode
+      and represent every entry as an org-mode headline. Very cool!
+
+      ** 15:33 Work on org-journal                                   :org-journal:
+      Now my journal automatically creates the right headlines (adds the
+      current time stamp if on the current day, does not add a time stamp
+      for any other day). Additionally, it automatically collapses the
+      headlines in the org-file to the right level (shows everything if in
+      view mode, shows only headlines in new-entry-mode). Emacs and elisp
+      are really cool!
+
+      ** 16:40 Work on org-journal                                   :org-journal:
+      I uploaded my journal mode to marmalade and Github! Awesome!
+
+      ** TODO teach org-journal how to brew coffee                   :org-journal:
+
+
+Last edited 2017-04-20 05:52 UTC by
+
+This work is licensed to you under version 2 of the
+[GNU](https://www.gnu.org/) [General Public License](/GPL).
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under the
+[GNU](https://www.gnu.org/) [Free Documentation License](/FDL), the
+[CreativeCommons](https://creativecommons.org/)
+[ShareAlike](https://creativecommons.org/licenses/sa/1.0/) License, the
+XEmacs manual license, or [similar licenses](/OLD).
+
+Please note our [Privacy Statement](Privacy).
+
+** TODO 
+   [2017-05-07 Sun]
+   [[file:~/.org/notes.org::*f123%20info][f123 info]]
+
+I want to make sure this info is appended and doesn't overwrite my previous entry.
+
+
+** TODO ** More like done.
+Here's the deal:
+
+1. Here's the text of my capture-prepare.el file:
+
+     (setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+     (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/notes.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+             "* %?\nEntered on %U\n  %i\n  %a")))
+
+2. c-c c gets you to a place where you can enter t for todo or j for journal. Todos are kept in one file and the journal in another.
+
+3. Just type. You're in orgmode.
+
+4. Press c-c c-c to finish. Your stuff is saved and you are back to where you were when you wanted to write something down.
+
+
+
+  
+   [[info:org#Capture%20templates][info:org#Capture templates]]
+
+** TODO ** Word Completion
+
+I can get dynamic completion to work. Type ~m-/~ and words you have once in a buffer will be completed.
+
+If you don't like the first try, press ~m-/~ again and see if the next choice is better.
+
+This is still a work in progress.
+
+Raman suggests something about a completion library in his
+introduction to emacspeak, but I couldn't figure this out.
+
+** TODO ** csv-mode
+
+~csv-mode~ is not included by default. I think it can be useful and should be included.
+  
+   [[file:~/org/f123.org][file:~/org/f123.org]]
+** TODO spelling again
+
+1. I found a web page with lots of ispell dictionary links.
+
+2. That brought me to aspell and a wordlist I could clone from git: https://github.com/en-wl/wordlist.git
+
+3. From the alt12dic directory, I copied 5desktop.txt to my .emacs.d directory.
+
+4. Tab completion didn't work. I got a look error.
+
+** more confusion
+
+I am confused between an alternate dictionary and a word list. They are both plain flat files.
+
+** possible limitation: aspell is the dictionary program or hunspell. 
+** TODO tar-mode
+
+Did you know there is a tar-mode and a view-mode for processing tar balls?
+** TODO Need to correct c-c c for org-capture. It redefines a tabular process, probably in csv-mode.
+** TODO testing c-c b instead of c-c c for org-capture. Redefined a key. I'll check =csv= key bindings.
+  
+   [[file:~/.emacs.d/lisp/capture-prepare.el::(define-key%20global-map%20"\C-cb"%20'org-capture)]]
+** TODO 
+** TODO 
+** TODO c-c c
+
+This orks and does not affect csv.
+  
+   [[file:~/.emacs.d/init.el::(setq%20line-number-mode%20nil)]]
+** TODO info inside of emacs
+
+You cannot open the emacspeak info files within emacs.
+  
+   [[info:dir#Top][info:dir#Top]]
+** TODO 
+Hmm. Emacspeak already has a shortcut to org-capture. Let's see where org-capture put this note.
+** TODO 
+** List of ispell variables:
+
+Parent groups: [Applications]
+
+Ispell group: User variables for Emacs ispell interface.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Ispell Alternate Dictionary: [Value Menu] None
+   [ State ]: STANDARD.
+   Alternate plain word-list dictionary for spelling help.
+
+Show Value Ispell Check Comments 
+   Spelling of comments checked when non-nil. Hide
+   When set to ‘exclusive’, ONLY comments are checked.  (For code comments).
+   Warning!  Not checking comments, when a comment start is embedded in strings,
+   may produce undesired results.
+
+Hide Ispell Choices Win Default Height: 2
+   [ State ]: STANDARD.
+   The default size of the ‘*Choices*’ window, including the mode line. Hide
+   Must be greater than 1.
+
+Hide Ispell Complete Word Dict: [Value Menu] None
+   [ State ]: STANDARD.
+   Plain word-list dictionary used for word completion if Hide
+   different from ‘ispell-alternate-dictionary’.
+
+Hide Ispell Dictionary: [Value Menu] default
+   [ State ]: SAVED and set.
+   Default dictionary to use if ‘ispell-local-dictionary’ is nil.
+
+Show Value Ispell Extra Args 
+   If non-nil, a list of extra switches to pass to the Ispell program. Hide
+   For example, ("-W" "3") to cause it to accept all 1-3 character
+   words as correct.  See also ‘ispell-dictionary-alist’, which may be used
+   for language-specific arguments.
+
+Show Value Ispell Following Word 
+   Non-nil means ‘ispell-word’ checks the word around or after point. Hide
+   Otherwise ‘ispell-word’ checks the preceding word.
+
+Hide Ispell Format Word Function: upcase
+   [ State ]: STANDARD.
+   Formatting function for displaying word being spell checked. Hide
+   The function must take one string argument and return a string.
+
+Hide Ispell Grep Command: egrep
+   [ State ]: STANDARD.
+   Name of the grep command for search processes.
+
+Hide Ispell Grep Options: -i
+   [ State ]: STANDARD.
+   String of options to use when running the program in ‘ispell-grep-command’. More
+
+Hide Ispell Have New Look: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means use the ‘-r’ option (regexp) when running ‘look’.
+
+Hide Ispell Help In Bufferp: [Value Menu] off
+   [ State ]: STANDARD.
+   Non-nil means display interactive keymap help in a buffer. Hide
+   The following values are supported:
+     nil        Expand the minibuffer and display a short help message
+                there for a couple of seconds.
+     t          Pop up a new buffer and display a short help message there
+                for a couple of seconds.
+     electric   Pop up a new buffer and display a long help message there.
+                User can browse and then exit the help mode.
+
+Hide Ispell Highlight Face: (sample) isearch
+   [ State ]: STANDARD.
+   Face used for Ispell highlighting. Hide
+   This variable can be set by the user to whatever face they desire.
+   It’s most convenient if the cursor color and highlight color are
+   slightly different.
+
+Hide Ispell Highlight P: [Value Menu] block
+   [ State ]: STANDARD.
+   Highlight spelling errors when non-nil. Hide
+   When set to ‘block’, assumes a block cursor with TTY displays.
+
+Hide Ispell Keep Choices Win: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   If non-nil, keep the ‘*Choices*’ window for the entire spelling session. Hide
+   This minimizes redisplay thrashing.
+
+Hide Ispell Lazy Highlight: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Controls the lazy-highlighting of spelling errors. Hide
+   When non-nil, all text in the buffer matching the current spelling
+   error is highlighted lazily using isearch lazy highlighting (see
+   ‘lazy-highlight-initial-delay’ and ‘lazy-highlight-interval’).
+
+Hide Ispell Local Dictionary: [Value Menu] default
+   [ State ]: STANDARD.
+   If non-nil, the dictionary to be used for Ispell commands in this buffer. Hide
+   The value must be a string dictionary name,
+   or nil, which means use the global setting in ‘ispell-dictionary’.
+   Dictionary names are defined in ‘ispell-local-dictionary-alist’
+   and ‘ispell-dictionary-alist’.
+   
+   Setting ‘ispell-local-dictionary’ to a value has the same effect as
+   calling M-x ispell-change-dictionary with that value.  This variable
+   is automatically set when defined in the file with either
+   ‘ispell-dictionary-keyword’ or the Local Variable syntax.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Ispell Local Dictionary Alist:
+[INS]
+   [ State ]: STANDARD.
+   List of local or customized dictionary definitions. Hide
+   These can override the values in ‘ispell-dictionary-alist’.
+   
+   To make permanent changes to your dictionary definitions, you
+   will need to make your changes in this variable, save, and then
+   re-start Emacs.
+
+Hide Ispell Look Command: /usr/bin/look
+   [ State ]: SAVED and set.
+   Name of the look command for search processes. Hide
+   This must be an absolute file name.
+
+Hide Ispell Look Options: -df
+   [ State ]: STANDARD.
+   String of command options for ‘ispell-look-command’.
+
+Hide Ispell Look P: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Non-nil means use ‘look’ rather than ‘grep’. Hide
+   Default is based on whether ‘look’ seems to be available.
+
+Hide Ispell Message Dictionary Alist:
+[INS]
+   [ State ]: STANDARD.
+   List used by ‘ispell-message’ to select a new dictionary. Hide
+   It consists of pairs (REGEXP . DICTIONARY).  If REGEXP is found
+   in the message headers, ‘ispell-local-dictionary’ will be set to
+   DICTIONARY if ‘ispell-local-dictionary’ is not buffer-local.
+   E.g. you may use the following value:
+      (("^Newsgroups:[ \t]*de\\." . "deutsch8")
+       ("^To:[^\n,]+\\.de[ \t\n,>]" . "deutsch8"))
+
+Hide Ispell Message Fcc Skip: [Value Menu] Integer: 50000
+   [ State ]: STANDARD.
+   Query before saving Fcc message copy if attachment larger than this value. Hide
+   Always stores Fcc copy of message when nil.
+
+Hide Ispell Personal Dictionary: [Value Menu] default
+   [ State ]: STANDARD.
+   File name of your personal spelling dictionary, or nil. Hide
+   If nil, the default personal dictionary, ("~/.ispell_DICTNAME" for ispell or
+   "~/.aspell.LANG.pws" for Aspell) is used, where DICTNAME is the name of your
+   default dictionary and LANG the two letter language code.
+
+Hide Ispell Program Name: /usr/bin/ispell
+   [ State ]: STANDARD.
+   Program invoked by M-$ and M-x ispell-region commands.
+
+Hide Ispell Query Replace Choices: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Corrections made throughout region when non-nil. Hide
+   Uses ‘query-replace’ (M-%) for corrections.
+
+Hide Ispell Quietly: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means suppress messages in ‘ispell-word’.
+
+Hide Ispell Silently Savep: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil, save personal dictionary without asking for confirmation.
+
+Hide Ispell Skip Html: [Value Menu] use-mode-name
+   [ State ]: STANDARD.
+   Indicates whether ispell should skip spell checking of SGML markup. Hide
+   If t, always skip SGML markup; if nil, never skip; if non-t and non-nil,
+   guess whether SGML markup should be skipped according to the name of the
+   buffer’s major mode.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Ispell Skip Tib: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Does not spell check ‘tib’ bibliography references when non-nil. Hide
+   Skips any text between strings matching regular expressions
+   ‘ispell-tib-ref-beginning’ and ‘ispell-tib-ref-end’.
+   
+   TeX users beware:  Any text between [. and .] will be skipped -- even if
+   that’s your whole buffer -- unless you set ‘ispell-skip-tib’ to nil.
+   That includes the [.5mm] type of number...
+
+Hide Ispell Use Framepop P: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil ispell uses framepop to display choices in a dedicated frame. Hide
+   You can set this variable to dynamically use framepop if you are in a
+   window system by evaluating the following on startup to set this variable:
+     (and window-system (condition-case () (require 'framepop) (error nil)))
+
+Hide Ispell Use Ptys P: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil, Emacs uses ptys to communicate with Ispell. Hide
+   When nil, Emacs uses pipes.
+
+Parent groups: [Emacspeak]
+
+Emacspeak Ispell group: Spell checking group.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Emacspeak Ispell Max Choices: 20
+   [ State ]: SAVED and set.
+   Emacspeak will not speak the choices if there are more than this Hide
+   many available corrections.
+** TODO  term
+
+This is term emulation mode. You can use text-based browsers, editors or mail programs here. See Chapter 11 in =emacspeak.texi=.
+  
+   [[info:emacspeak#Running%20Terminal%20Based%20Applications][info:emacspeak#Running Terminal Based Applications]]
+** TODO
+** TODOorg-directory :f123(f) 
+
+~/org/
+   [ State ]: SAVED and set.
+   Directory with Org files. Hide
+   This is just a default location to look for Org files.  There is no need
+   at all to put your files into this directory.  It is used in the
+   following situations:
+   
+   1. When a capture template specifies a target file that is not an
+      absolute path.  The path will then be interpreted relative to
+      ‘org-directory’
+   2. When the value of variable ‘org-agenda-files’ is a single file, any
+      relative paths in this file will be taken as relative to
+      ‘org-directory’.
+Groups: [Org Capture] [Org Refile]
+* 2017
+** 2017-05 May
+*** 2017-05-12 Friday
+*** 2017-05-14 Sunday
+**** Subtree Level :question(q) 
+
+Why aren't my tags being picked up as already defined?
+   Entered on [2017-05-14 Sun 16:08]
+**** Subtree :question(q)
+
+Why is this a level 4 in the subtree. I don't see anywhere to define this.
+   Entered on [2017-05-14 Sun 16:10]
+  
+     [[file:~/org/f123.org::*Subtree%20Level%20:question(q)][Subtree Level :question(q)]]
+* 2017
+** 2017-05 May
+*** 2017-05-12 Friday
+*** 2017-05-14 Sunday
+**** char-exclusive :question(q) 
+
+I have no idea what this means when I press =c-c c= my global key for org-capture. It functions as the prompt to enter a letter for what kind of capture I want, but there's no friendly menu or help. This seems counter intuitive and I used to get a menu even when I defined the choices.
+   Entered on [2017-05-14 Sun 15:08]
+  
+     [[file:~/org/f123.bak][file:~/org/f123.bak]]
+
+
+* Tasks
+** TODO 
+   [2017-05-06 Sat]
+   [[file:~/.emacs.d/lisp/capture-prepare.el][file:~/.emacs.d/lisp/capture-prepare.el]]
+
+** Sat May  6 15:46:23 2017 (F123 Notes)
+
+F123 Notes
+** TODO 
+   [2017-05-06 Sat]
+   [[file:~/.emacs.d/lisp/capture-prepare.el::(define-key%20global-map%20"\C-cc"%20'org-capture)]]
+
++ Figure out how to use org-capture effectively.
++ At the moment, only the todo template is active.
++ I think I want a journal template for these notes.
++ org-capture replaces remember.
++ org-capture can be bound to c-cc.
++ It can also be bound to C-cb.
++ The org directory by default is hidden. I think this should be changed.
++ You exit by c-c c-c.
++ There is no need to save your notes after writing them.
++ Yyou can explicitly kill your notes if you don't want them saved.
+
+** I'm using remember to record these notes.
+** emacspeak-flyspell-correct has three possible values:
+
+  1. ido
+    2. popup
+      3. helm
+
+  None seems to have any effect.
+
+** Helm is a mode available through the aur. Raman has a prepare.el file for it but in its current state it doesn't work for me.
+** I'm investigating remember as a tool for our notes.
+** Sat May  6 15:55:40 2017 (t* m-x remember brings up the remember buffer. c-c c-c saves)
+** m-x remember brings up the remember buffer. c-c c-c saves and bruies the buffer. When you invoke remember again, you get a clean buffer.
+** Sat May  6 15:58:37 2017 ()
+
+
+
+/home/rill/.emacs.d/custom.el
+
+** Sat May  6 16:01:52 2017 (* Remember doesn't work with markdown. Sad.)
+** Remember doesn't work with markdown. Sad.
+** f123 info
+
+  - Should exist for a new user
+    - include description of raspberry pi and its care and feeding.
+      - how much emacs stuff to include?
+        - what sort of other reference data should we include?
+	  - how much is on the user's shoulders? If these aren't technical people, do they need lots of hand holding?
+
+/home/rill/.emacs.d/custom.el
+
+** TODO 
+   [2017-05-07 Sun]
+   [[file:~/OrgJournal.txt][file:~/OrgJournal.txt]]
+
+To research: I think org-journal is part of orgmode. The variables have probably not changed. Need to figure out how to create default settings.
+
+From https://www.emacswiki.org/emacs/OrgJournal/
+
+
+Adapted from
+[PersonalDiary](https://www.emacswiki.org/emacs/PersonalDiary){.local}
+
+Org-journal is a set of functions to maintain a simple personal diary /
+journal in Emacs.
+
+Feel free to use, modify and improve the code! — mtvoid, bastibe
+
+**Breaking Changes in 1.6**
+
+Key bindings have been changed from `C-c j`, `C-c f`, and `C-c b` to
+`C-c C-j`, `C-c C-f`, and `C-c C-b`, in order to comply with Emacs’
+conventions of reserving `C-c [a-zA-Z]` for user-defined keys.
+
+This file is also available from
+[marmalade](http://marmalade-repo.org){.url .http .outside},
+[melpa](http://melpa.milkbox.net){.url .http .outside} and
+[melpa-stable](http://melpa-stable.milkbox.net){.url .http .outside}
+under the name org-journal or on
+[GitHub](https://github.com/bastibe/emacs-journal){.url .http .outside}.
+After installing, add the line `(require 'org-journal)` to your /.emacs/
+or *init.el* to activate it. You may also want to specify the directory
+where your journal files will be saved. You can do this by setting the
+variable `org-journal-dir` (remember to add a trailing slash).
+`org-journal-dir` is also a customizable variable. The default value for
+`org-journal-dir` is `~/Documents/journal/`. Note: you have to customize
+`org-journal-dir` before you load `org-journal` as otherwise Emacs would
+not set the mode correctly.
+
+You can add all those calendar files to your org-agenda by adding
+`org-journal-dir` to `org-agenda-files` and setting
+`org-agenda-file-regexp` to include files with an all-numeric name
+(`` \\`[^.].*\\.org'\\|[0-9]+$ ``). That way, you can use org-agenda to
+search for *TODO* items or tagged items in your org-journal.
+
+Inside the journal directory, a separate file is created for each day
+with a journal entry, with a file name in the format *YYYYMMDD*. Each
+journal entry is an org-mode file that begins with a date entry on the
+top, followed by a entries for different times. Any subsequent entries
+on the same day are written as additional headings in the same file,
+with their own time. To start writing a journal entry, press `C-c C-j`.
+You can also open the current day’s entry without adding a new entry
+with `C-u C-c C-j`.
+
+You can customize the date and time formats using the variables
+`org-journal-date-format` and `org-journal-time-format`. If you do not
+want to use org headings and sub-headings for date and time entries,
+customize `org-journal-date-prefix` and `org-journal-time-prefix`. For
+example, you could set `org-journal-date-prefix` to `#+TITLE:` in order
+to begin every file with a title instead of a heading. If you want to
+store your journal entries with different file names, customize
+`org-journal-file-format`.
+
+You can browse through existing journal entries on disk via the
+calendar. All dates for which an entry is present are highlighted.
+Pressing `j` will open it up for viewing. Pressing `C-j` will open it
+for viewing, but not switch to it. Pressing `[` or `]` will select the
+date with the previous or next journal entry, respectively. Pressing
+`i j` will create a new entry for the chosen date.
+
+Quick summary:
+
+-   To create a new journal entry: `C-c C-j`
+-   To open today’s journal without creating a new entry: `C-u C-c C-j`
+
+In calendar view:
+
+-   `j` to view an entry
+-   `C-j` to view an entry but not switch to it
+-   `i j` to add a new entry
+-   `[` to go to previous entry
+-   `]` to go to next entry
+
+When viewing a journal entry:
+
+-   `C-c C-f` to view next entry
+-   `C-c C-b` to view previous entry
+
+A typical journal entry for a day would look like this:
+
+(it will actually look a lot nicer, depending on your org-mode settings)
+
+      * Tuesday, 06/04/13
+      ** 10:28 Company meeting
+      Endless discussions about projects. Not much progress
+
+      ** 11:33 Work on org-journal                                   :org-journal:
+      For the longest time, I wanted to have a cool diary app on my
+      computer. However, I simply lacked the right tool for that job. After
+      many hours of searching, I finally found PersonalDiary on EmacsWiki.
+      PersonalDiary is a very simple diary system based on the emacs
+      calendar. It works pretty well, but I don't really like that it only
+      uses unstructured text.
+
+      Thus, I spent the last two hours with making that diary use org-mode
+      and represent every entry as an org-mode headline. Very cool!
+
+      ** 15:33 Work on org-journal                                   :org-journal:
+      Now my journal automatically creates the right headlines (adds the
+      current time stamp if on the current day, does not add a time stamp
+      for any other day). Additionally, it automatically collapses the
+      headlines in the org-file to the right level (shows everything if in
+      view mode, shows only headlines in new-entry-mode). Emacs and elisp
+      are really cool!
+
+      ** 16:40 Work on org-journal                                   :org-journal:
+      I uploaded my journal mode to marmalade and Github! Awesome!
+
+      ** TODO teach org-journal how to brew coffee                   :org-journal:
+
+
+Last edited 2017-04-20 05:52 UTC by
+
+This work is licensed to you under version 2 of the
+[GNU](https://www.gnu.org/) [General Public License](/GPL).
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under the
+[GNU](https://www.gnu.org/) [Free Documentation License](/FDL), the
+[CreativeCommons](https://creativecommons.org/)
+[ShareAlike](https://creativecommons.org/licenses/sa/1.0/) License, the
+XEmacs manual license, or [similar licenses](/OLD).
+
+Please note our [Privacy Statement](Privacy).
+
+** TODO 
+   [2017-05-07 Sun]
+   [[file:~/.org/notes.org::*f123%20info][f123 info]]
+
+I want to make sure this info is appended and doesn't overwrite my previous entry.
+
+
+** TODO ** More like done.
+Here's the deal:
+
+1. Here's the text of my capture-prepare.el file:
+
+     (setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+     (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/notes.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+             "* %?\nEntered on %U\n  %i\n  %a")))
+
+2. c-c c gets you to a place where you can enter t for todo or j for journal. Todos are kept in one file and the journal in another.
+
+3. Just type. You're in orgmode.
+
+4. Press c-c c-c to finish. Your stuff is saved and you are back to where you were when you wanted to write something down.
+
+
+
+  
+   [[info:org#Capture%20templates][info:org#Capture templates]]
+
+** TODO ** Word Completion
+
+I can get dynamic completion to work. Type ~m-/~ and words you have once in a buffer will be completed.
+
+If you don't like the first try, press ~m-/~ again and see if the next choice is better.
+
+This is still a work in progress.
+
+Raman suggests something about a completion library in his
+introduction to emacspeak, but I couldn't figure this out.
+
+** TODO ** csv-mode
+
+~csv-mode~ is not included by default. I think it can be useful and should be included.
+  
+   [[file:~/org/f123.org][file:~/org/f123.org]]
+** TODO spelling again
+
+1. I found a web page with lots of ispell dictionary links.
+
+2. That brought me to aspell and a wordlist I could clone from git: https://github.com/en-wl/wordlist.git
+
+3. From the alt12dic directory, I copied 5desktop.txt to my .emacs.d directory.
+
+4. Tab completion didn't work. I got a look error.
+
+** more confusion
+
+I am confused between an alternate dictionary and a word list. They are both plain flat files.
+
+** possible limitation: aspell is the dictionary program or hunspell. 
+** TODO tar-mode
+
+Did you know there is a tar-mode and a view-mode for processing tar balls?
+** TODO Need to correct c-c c for org-capture. It redefines a tabular process, probably in csv-mode.
+** TODO testing c-c b instead of c-c c for org-capture. Redefined a key. I'll check =csv= key bindings.
+  
+   [[file:~/.emacs.d/lisp/capture-prepare.el::(define-key%20global-map%20"\C-cb"%20'org-capture)]]
+** TODO 
+** TODO 
+** TODO c-c c
+
+This orks and does not affect csv.
+  
+   [[file:~/.emacs.d/init.el::(setq%20line-number-mode%20nil)]]
+** TODO info inside of emacs
+
+You cannot open the emacspeak info files within emacs.
+  
+   [[info:dir#Top][info:dir#Top]]
+** TODO 
+Hmm. Emacspeak already has a shortcut to org-capture. Let's see where org-capture put this note.
+** TODO 
+** List of ispell variables:
+
+Parent groups: [Applications]
+
+Ispell group: User variables for Emacs ispell interface.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Ispell Alternate Dictionary: [Value Menu] None
+   [ State ]: STANDARD.
+   Alternate plain word-list dictionary for spelling help.
+
+Show Value Ispell Check Comments 
+   Spelling of comments checked when non-nil. Hide
+   When set to ‘exclusive’, ONLY comments are checked.  (For code comments).
+   Warning!  Not checking comments, when a comment start is embedded in strings,
+   may produce undesired results.
+
+Hide Ispell Choices Win Default Height: 2
+   [ State ]: STANDARD.
+   The default size of the ‘*Choices*’ window, including the mode line. Hide
+   Must be greater than 1.
+
+Hide Ispell Complete Word Dict: [Value Menu] None
+   [ State ]: STANDARD.
+   Plain word-list dictionary used for word completion if Hide
+   different from ‘ispell-alternate-dictionary’.
+
+Hide Ispell Dictionary: [Value Menu] default
+   [ State ]: SAVED and set.
+   Default dictionary to use if ‘ispell-local-dictionary’ is nil.
+
+Show Value Ispell Extra Args 
+   If non-nil, a list of extra switches to pass to the Ispell program. Hide
+   For example, ("-W" "3") to cause it to accept all 1-3 character
+   words as correct.  See also ‘ispell-dictionary-alist’, which may be used
+   for language-specific arguments.
+
+Show Value Ispell Following Word 
+   Non-nil means ‘ispell-word’ checks the word around or after point. Hide
+   Otherwise ‘ispell-word’ checks the preceding word.
+
+Hide Ispell Format Word Function: upcase
+   [ State ]: STANDARD.
+   Formatting function for displaying word being spell checked. Hide
+   The function must take one string argument and return a string.
+
+Hide Ispell Grep Command: egrep
+   [ State ]: STANDARD.
+   Name of the grep command for search processes.
+
+Hide Ispell Grep Options: -i
+   [ State ]: STANDARD.
+   String of options to use when running the program in ‘ispell-grep-command’. More
+
+Hide Ispell Have New Look: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means use the ‘-r’ option (regexp) when running ‘look’.
+
+Hide Ispell Help In Bufferp: [Value Menu] off
+   [ State ]: STANDARD.
+   Non-nil means display interactive keymap help in a buffer. Hide
+   The following values are supported:
+     nil        Expand the minibuffer and display a short help message
+                there for a couple of seconds.
+     t          Pop up a new buffer and display a short help message there
+                for a couple of seconds.
+     electric   Pop up a new buffer and display a long help message there.
+                User can browse and then exit the help mode.
+
+Hide Ispell Highlight Face: (sample) isearch
+   [ State ]: STANDARD.
+   Face used for Ispell highlighting. Hide
+   This variable can be set by the user to whatever face they desire.
+   It’s most convenient if the cursor color and highlight color are
+   slightly different.
+
+Hide Ispell Highlight P: [Value Menu] block
+   [ State ]: STANDARD.
+   Highlight spelling errors when non-nil. Hide
+   When set to ‘block’, assumes a block cursor with TTY displays.
+
+Hide Ispell Keep Choices Win: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   If non-nil, keep the ‘*Choices*’ window for the entire spelling session. Hide
+   This minimizes redisplay thrashing.
+
+Hide Ispell Lazy Highlight: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Controls the lazy-highlighting of spelling errors. Hide
+   When non-nil, all text in the buffer matching the current spelling
+   error is highlighted lazily using isearch lazy highlighting (see
+   ‘lazy-highlight-initial-delay’ and ‘lazy-highlight-interval’).
+
+Hide Ispell Local Dictionary: [Value Menu] default
+   [ State ]: STANDARD.
+   If non-nil, the dictionary to be used for Ispell commands in this buffer. Hide
+   The value must be a string dictionary name,
+   or nil, which means use the global setting in ‘ispell-dictionary’.
+   Dictionary names are defined in ‘ispell-local-dictionary-alist’
+   and ‘ispell-dictionary-alist’.
+   
+   Setting ‘ispell-local-dictionary’ to a value has the same effect as
+   calling M-x ispell-change-dictionary with that value.  This variable
+   is automatically set when defined in the file with either
+   ‘ispell-dictionary-keyword’ or the Local Variable syntax.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Ispell Local Dictionary Alist:
+[INS]
+   [ State ]: STANDARD.
+   List of local or customized dictionary definitions. Hide
+   These can override the values in ‘ispell-dictionary-alist’.
+   
+   To make permanent changes to your dictionary definitions, you
+   will need to make your changes in this variable, save, and then
+   re-start Emacs.
+
+Hide Ispell Look Command: /usr/bin/look
+   [ State ]: SAVED and set.
+   Name of the look command for search processes. Hide
+   This must be an absolute file name.
+
+Hide Ispell Look Options: -df
+   [ State ]: STANDARD.
+   String of command options for ‘ispell-look-command’.
+
+Hide Ispell Look P: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Non-nil means use ‘look’ rather than ‘grep’. Hide
+   Default is based on whether ‘look’ seems to be available.
+
+Hide Ispell Message Dictionary Alist:
+[INS]
+   [ State ]: STANDARD.
+   List used by ‘ispell-message’ to select a new dictionary. Hide
+   It consists of pairs (REGEXP . DICTIONARY).  If REGEXP is found
+   in the message headers, ‘ispell-local-dictionary’ will be set to
+   DICTIONARY if ‘ispell-local-dictionary’ is not buffer-local.
+   E.g. you may use the following value:
+      (("^Newsgroups:[ \t]*de\\." . "deutsch8")
+       ("^To:[^\n,]+\\.de[ \t\n,>]" . "deutsch8"))
+
+Hide Ispell Message Fcc Skip: [Value Menu] Integer: 50000
+   [ State ]: STANDARD.
+   Query before saving Fcc message copy if attachment larger than this value. Hide
+   Always stores Fcc copy of message when nil.
+
+Hide Ispell Personal Dictionary: [Value Menu] default
+   [ State ]: STANDARD.
+   File name of your personal spelling dictionary, or nil. Hide
+   If nil, the default personal dictionary, ("~/.ispell_DICTNAME" for ispell or
+   "~/.aspell.LANG.pws" for Aspell) is used, where DICTNAME is the name of your
+   default dictionary and LANG the two letter language code.
+
+Hide Ispell Program Name: /usr/bin/ispell
+   [ State ]: STANDARD.
+   Program invoked by M-$ and M-x ispell-region commands.
+
+Hide Ispell Query Replace Choices: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Corrections made throughout region when non-nil. Hide
+   Uses ‘query-replace’ (M-%) for corrections.
+
+Hide Ispell Quietly: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means suppress messages in ‘ispell-word’.
+
+Hide Ispell Silently Savep: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil, save personal dictionary without asking for confirmation.
+
+Hide Ispell Skip Html: [Value Menu] use-mode-name
+   [ State ]: STANDARD.
+   Indicates whether ispell should skip spell checking of SGML markup. Hide
+   If t, always skip SGML markup; if nil, never skip; if non-t and non-nil,
+   guess whether SGML markup should be skipped according to the name of the
+   buffer’s major mode.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Ispell Skip Tib: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Does not spell check ‘tib’ bibliography references when non-nil. Hide
+   Skips any text between strings matching regular expressions
+   ‘ispell-tib-ref-beginning’ and ‘ispell-tib-ref-end’.
+   
+   TeX users beware:  Any text between [. and .] will be skipped -- even if
+   that’s your whole buffer -- unless you set ‘ispell-skip-tib’ to nil.
+   That includes the [.5mm] type of number...
+
+Hide Ispell Use Framepop P: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil ispell uses framepop to display choices in a dedicated frame. Hide
+   You can set this variable to dynamically use framepop if you are in a
+   window system by evaluating the following on startup to set this variable:
+     (and window-system (condition-case () (require 'framepop) (error nil)))
+
+Hide Ispell Use Ptys P: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   When non-nil, Emacs uses ptys to communicate with Ispell. Hide
+   When nil, Emacs uses pipes.
+
+Parent groups: [Emacspeak]
+
+Emacspeak Ispell group: Spell checking group.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Emacspeak Ispell Max Choices: 20
+   [ State ]: SAVED and set.
+   Emacspeak will not speak the choices if there are more than this Hide
+   many available corrections.
+** TODO  term
+
+This is term emulation mode. You can use text-based browsers, editors or mail programs here. See Chapter 11 in =emacspeak.texi=.
+  
+   [[info:emacspeak#Running%20Terminal%20Based%20Applications][info:emacspeak#Running Terminal Based Applications]]
+** TODO
+** TODOorg-directory :f123(f) 
+
+~/org/
+   [ State ]: SAVED and set.
+   Directory with Org files. Hide
+   This is just a default location to look for Org files.  There is no need
+   at all to put your files into this directory.  It is used in the
+   following situations:
+   
+   1. When a capture template specifies a target file that is not an
+      absolute path.  The path will then be interpreted relative to
+      ‘org-directory’
+   2. When the value of variable ‘org-agenda-files’ is a single file, any
+      relative paths in this file will be taken as relative to
+      ‘org-directory’.
+Groups: [Org Capture] [Org Refile]
+* 2017
+** 2017-05 May
+*** 2017-05-12 Friday
+*** 2017-05-14 Sunday
+**** Subtree Level :question(q) 
+
+Why aren't my tags being picked up as already defined?
+   Entered on [2017-05-14 Sun 16:08]
+**** Subtree :question(q)
+
+Why is this a level 4 in the subtree. I don't see anywhere to define this.
+   Entered on [2017-05-14 Sun 16:10]
+  
+     [[file:~/org/f123.org::*Subtree%20Level%20:question(q)][Subtree Level :question(q)]]
+* 2017
+** 2017-05 May
+*** 2017-05-12 Friday
+*** 2017-05-14 Sunday
+**** char-exclusive :question(q) 
+
+I have no idea what this means when I press =c-c c= my global key for org-capture. It functions as the prompt to enter a letter for what kind of capture I want, but there's no friendly menu or help. This seems counter intuitive and I used to get a menu even when I defined the choices.
+   Entered on [2017-05-14 Sun 15:08]
+  
+     [[file:~/org/f123.bak][file:~/org/f123.bak]]
+
+This part of the file may be a bit out of order. When I get a chance, I will fix it. Going forward ...
+
