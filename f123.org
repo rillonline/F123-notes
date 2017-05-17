@@ -1085,3 +1085,484 @@ I have no idea what this means when I press =c-c c= my global key for org-captur
 
 This part of the file may be a bit out of order. When I get a chance, I will fix it. Going forward ...
 
+
+*** 2017-05-17 Wednesday
+**** splash
+
+fancy-splash-image controls the splash image when Emacs starts. It is either =default= or the name of a =file= and the file name. 
+Entered on [2017-05-17 Wed 12:55]
+**** Initialization Group
+
+Values for the initialization group.
+
+
+Parent groups: [Environment]
+
+Initialization group: Emacs start-up procedure.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Inhibit Default Init: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil inhibits loading the ‘default’ library.
+
+Hide Inhibit Startup Buffer Menu: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil inhibits display of buffer list when more than 2 files are loaded.
+
+Hide Inhibit Startup Echo Area Message: [Value Menu] Don’t inhibit
+   [ State ]: STANDARD.
+   Non-nil inhibits the initial startup echo area message. Hide
+   
+   The startup message is in the echo area as it provides information
+   about GNU Emacs and the GNU system in general, which we want all
+   users to see.  As this is the least intrusive startup message,
+   this variable gets specialized treatment to prevent the message
+   from being disabled site-wide by systems administrators, while
+   still allowing individual users to do so.
+   
+   Setting this variable takes effect only if you do it with the
+   customization buffer or if your init file contains a line of this
+   form:
+    (setq inhibit-startup-echo-area-message "YOUR-USER-NAME")
+   If your init file is byte-compiled, use the following form
+   instead:
+    (eval '(setq inhibit-startup-echo-area-message "YOUR-USER-NAME"))
+   Thus, someone else using a copy of your init file will see the
+   startup message unless he personally acts to inhibit it.
+
+Hide Inhibit Startup Screen: [Toggle]  on (non-nil)
+   [ State ]: SAVED and set.
+   Non-nil inhibits the startup screen. More
+
+Show Value Initial Buffer Choice 
+   Buffer to show after starting Emacs. Hide
+   If the value is nil and ‘inhibit-startup-screen’ is nil, show the
+   startup screen.  If the value is a string, switch to a buffer
+   visiting the file or directory that the string specifies.  If the
+   value is a function, call it with no arguments and switch to the buffer
+   that it returns.  If t, open the ‘*scratch*’ buffer.
+   
+   When ‘initial-buffer-choice’ is non-nil, the startup screen is
+   inhibited.
+   
+   If you use ‘emacsclient’ with no target file, then it obeys any
+   string or function value that this variable has.
+
+Hide Initial Major Mode: lisp-interaction-mode
+   [ State ]: STANDARD.
+   Major mode command symbol to use for the initial ‘*scratch*’ buffer.
+
+Hide Initial Scratch Message: [Value Menu] ;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with \[find-file] and enter text in its buffer.
+
+
+   [ State ]: STANDARD.
+   Initial documentation displayed in *scratch* buffer at startup. Hide
+   If this is nil, no message will be displayed.
+
+Hide Site Run File: [Value Menu] String: site-start
+   [ State ]: STANDARD.
+   File containing site-wide run-time initializations. Hide
+   This file is loaded at run-time before ‘~/.emacs’.  It contains inits
+   that need to be in place for the entire site, but which, due to their
+   higher incidence of change, don’t make sense to load into Emacs’s
+   dumped image.  Thus, the run-time load order is: 1. file described in
+   this variable, if non-nil; 2. ‘~/.emacs’; 3. ‘default.el’.
+   
+   Don’t use the ‘site-start.el’ file for things some users may not like.
+   Put them in ‘default.el’ instead, so that users can more easily
+   override them.  Users can prevent loading ‘default.el’ with the ‘-q’
+   option or by setting ‘inhibit-default-init’ in their own init files,
+   but inhibiting ‘site-start.el’ requires ‘--no-site-file’, which
+   is less convenient.
+   
+   This variable is defined for customization so as to make
+   it visible in the relevant context.  However, actually customizing it
+   is not allowed, since it would not work anyway.  The only way to set
+   this variable usefully is to set it while building and dumping Emacs.
+
+Hide User Emacs Directory Warning: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Non-nil means warn if cannot access ‘user-emacs-directory’. Hide
+   Set this to nil at your own risk...
+
+Subgroups:
+[Fancy Splash Screen]  		    Fancy splash screen when Emacs starts.
+
+
+
+Entered on [2017-05-17 Wed 13:08]
+  For help using this buffer, see [Easy Customization] in the [Emacs manual].
+  
+  
+  Parent groups: [Environment]
+  
+  Initialization group: Emacs start-up procedure.
+        [ State ]: something in this group has been set and saved.
+     
+  Hide Inhibit Default Init: [Toggle]  off (nil)
+     [ State ]: STANDARD.
+     Non-nil inhibits loading the ‘default’ library.
+  
+  Hide Inhibit Startup Buffer Menu: [Toggle]  off (nil)
+     [ State ]: STANDARD.
+     Non-nil inhibits display of buffer list when more than 2 files are loaded.
+  
+  Hide Inhibit Startup Echo Area Message: [Value Menu] Don’t inhibit
+     [ State ]: STANDARD.
+     Non-nil inhibits the initial startup echo area message. Hide
+     
+     The startup message is in the echo area as it provides information
+     about GNU Emacs and the GNU system in general, which we want all
+     users to see.  As this is the least intrusive startup message,
+     this variable gets specialized treatment to prevent the message
+     from being disabled site-wide by systems administrators, while
+     still allowing individual users to do so.
+     
+     Setting this variable takes effect only if you do it with the
+     customization buffer or if your init file contains a line of this
+     form:
+      (setq inhibit-startup-echo-area-message "YOUR-USER-NAME")
+     If your init file is byte-compiled, use the following form
+     instead:
+      (eval '(setq inhibit-startup-echo-area-message "YOUR-USER-NAME"))
+     Thus, someone else using a copy of your init file will see the
+     startup message unless he personally acts to inhibit it.
+  
+  Hide Inhibit Startup Screen: [Toggle]  on (non-nil)
+     [ State ]: SAVED and set.
+     Non-nil inhibits the startup screen. More
+  
+  Show Value Initial Buffer Choice 
+     Buffer to show after starting Emacs. Hide
+     If the value is nil and ‘inhibit-startup-screen’ is nil, show the
+     startup screen.  If the value is a string, switch to a buffer
+     visiting the file or directory that the string specifies.  If the
+     value is a function, call it with no arguments and switch to the buffer
+     that it returns.  If t, open the ‘*scratch*’ buffer.
+     
+     When ‘initial-buffer-choice’ is non-nil, the startup screen is
+     inhibited.
+     
+     If you use ‘emacsclient’ with no target file, then it obeys any
+     string or function value that this variable has.
+  
+  Hide Initial Major Mode: lisp-interaction-mode
+     [ State ]: STANDARD.
+     Major mode command symbol to use for the initial ‘*scratch*’ buffer.
+  
+  Hide Initial Scratch Message: [Value Menu] ;; This buffer is for text that is not saved, and for Lisp evaluation.
+  ;; To create a file, visit it with \[find-file] and enter text in its buffer.
+  
+  
+     [ State ]: STANDARD.
+     Initial documentation displayed in *scratch* buffer at startup. Hide
+     If this is nil, no message will be displayed.
+  
+  Hide Site Run File: [Value Menu] String: site-start
+     [ State ]: STANDARD.
+     File containing site-wide run-time initializations. Hide
+     This file is loaded at run-time before ‘~/.emacs’.  It contains inits
+     that need to be in place for the entire site, but which, due to their
+     higher incidence of change, don’t make sense to load into Emacs’s
+     dumped image.  Thus, the run-time load order is: 1. file described in
+     this variable, if non-nil; 2. ‘~/.emacs’; 3. ‘default.el’.
+     
+     Don’t use the ‘site-start.el’ file for things some users may not like.
+     Put them in ‘default.el’ instead, so that users can more easily
+     override them.  Users can prevent loading ‘default.el’ with the ‘-q’
+     option or by setting ‘inhibit-default-init’ in their own init files,
+     but inhibiting ‘site-start.el’ requires ‘--no-site-file’, which
+     is less convenient.
+     
+     This variable is defined for customization so as to make
+     it visible in the relevant context.  However, actually customizing it
+     is not allowed, since it would not work anyway.  The only way to set
+     this variable usefully is to set it while building and dumping Emacs.
+  
+  Hide User Emacs Directory Warning: [Toggle]  on (non-nil)
+     [ State ]: STANDARD.
+     Non-nil means warn if cannot access ‘user-emacs-directory’. Hide
+     Set this to nil at your own risk...
+  
+  Subgroups:
+  [Fancy Splash Screen]                     Fancy splash screen when Emacs starts.
+**** Display variables
+
+
+Parent groups: [Environment]
+
+Display group: How characters are displayed in buffers.
+      [ State ]: something in this group has been changed outside customize.
+   
+Hide Baud Rate: 38400
+   [ State ]: CHANGED outside Customize.
+   The output baud rate of the terminal. Hide
+   On most systems, changing this value will affect the amount of padding
+   and the other strategic decisions made during redisplay.
+
+Hide Ctl Arrow: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Non-nil means display control chars with uparrow. Hide
+   A value of nil means use backslash and octal digits.
+   This variable does not apply to characters whose display is specified
+   in the current display table (if there is one).
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Cursor Type: [Value Menu] Frame default
+   [ State ]: STANDARD.
+   Cursor to use when this buffer is in the selected window. Hide
+   Values are interpreted as follows:
+   
+     t               use the cursor specified for the frame
+     nil             don’t display a cursor
+     box             display a filled box cursor
+     hollow          display a hollow box cursor
+     bar             display a vertical bar cursor with default width
+     (bar . WIDTH)   display a vertical bar cursor with width WIDTH
+     hbar            display a horizontal bar cursor with default height
+     (hbar . HEIGHT) display a horizontal bar cursor with height HEIGHT
+     ANYTHING ELSE   display a hollow box cursor
+   
+   WIDTH and HEIGHT can’t exceed the frame’s canonical character size.
+   
+   When the buffer is displayed in a non-selected window, the
+   cursor’s appearance is instead controlled by the variable
+   ‘cursor-in-non-selected-windows’.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Font List Limit: 100
+   [ State ]: STANDARD.
+   This variable is obsolete and has no effect.
+
+Hide Glyphless Char Display Control:
+[ ] Key: c0-control
+    Choice: [Value Menu] invalid (nil)
+[ ] Key: c1-control
+    Choice: [Value Menu] invalid (nil)
+[X] Key: format-control
+    Choice: [Value Menu] Display as thin space
+[X] Key: no-font
+    Choice: [Value Menu] Display hex code in a box
+[INS]
+   [ State ]: STANDARD.
+   List of directives to control display of glyphless characters. Hide
+   
+   Each element has the form (GROUP . METHOD), where GROUP is a
+   symbol specifying the character group, and METHOD is a symbol
+   specifying the method of displaying characters belonging to that
+   group.
+   
+   GROUP must be one of these symbols:
+     ‘c0-control’:     U+0000..U+001F, but excluding newline and TAB.
+     ‘c1-control’:     U+0080..U+009F.
+     ‘format-control’: Characters of Unicode General Category ‘Cf’,
+                       such as U+200C (ZWNJ), U+200E (LRM), but
+                       excluding characters that have graphic images,
+                       such as U+00AD (SHY).
+     ‘no-font’:        characters for which no suitable font is found.
+                       For character terminals, characters that cannot
+                       be encoded by ‘terminal-coding-system’.
+   
+   METHOD must be one of these symbols:
+     ‘zero-width’: don’t display.
+     ‘thin-space’: display a thin (1-pixel width) space.  On character
+                   terminals, display as 1-character space.
+     ‘empty-box’:  display an empty box.
+     ‘acronym’:    display an acronym of the character in a box.  The
+                   acronym is taken from ‘char-acronym-table’, which see.
+     ‘hex-code’:   display the hexadecimal character code in a box.
+   
+   Do not set its value directly from Lisp; the value takes effect
+   only via a custom ‘:set’
+   function (‘update-glyphless-char-display’), which updates
+   ‘glyphless-char-display’.
+
+Hide Highlight Nonselected Windows: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means highlight region even in nonselected windows.
+
+Hide Idle Update Delay: 0.5
+   [ State ]: STANDARD.
+   Idle time delay before updating various things on the screen. Hide
+   Various Emacs features that update auxiliary information when point moves
+   wait this many seconds after Emacs becomes idle before doing an update.
+
+Hide Inverse Video: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means invert the entire frame display. Hide
+   This means everything is in inverse video which otherwise would not be.
+
+Hide Line Number Display Limit: [Value Menu] No limit
+   [ State ]: STANDARD.
+   Maximum buffer size for which line number should be displayed. Hide
+   If the buffer is bigger than this, the line number does not appear
+   in the mode line.  A value of nil means no limit.
+
+Hide Line Number Display Limit Width: 200
+   [ State ]: STANDARD.
+   Maximum line width (in characters) for line number display. Hide
+   If the average length of the lines near point is bigger than this, then the
+   line number may be omitted from the mode line.
+
+Hide Line Spacing: [Value Menu] none
+   [ State ]: STANDARD.
+   Additional space to put between lines when displaying a buffer. Hide
+   The space is measured in pixels, and put below lines on graphic displays,
+   see ‘display-graphic-p’.
+   If value is a floating point number, it specifies the spacing relative
+   to the default frame line height.  A value of nil means add no extra space.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Mouse Autoselect Window: [Value Menu] Off (nil)
+   [ State ]: STANDARD.
+   Non-nil means autoselect window with mouse pointer. Hide
+   If nil, do not autoselect windows.
+   A positive number means delay autoselection by that many seconds: a
+   window is autoselected only after the mouse has remained in that
+   window for the duration of the delay.
+   A negative number has a similar effect, but causes windows to be
+   autoselected only after the mouse has stopped moving.  (Because of
+   the way Emacs compares mouse events, you will occasionally wait twice
+   that time before the window gets selected.)
+   Any other value means to autoselect window instantaneously when the
+   mouse pointer enters it.
+   
+   Autoselection selects the minibuffer only if it is active, and never
+   unselects the minibuffer if it is active.
+   
+   When customizing this variable make sure that the actual value of
+   ‘focus-follows-mouse’ matches the behavior of your window manager.
+
+Hide No Redraw On Reenter: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means no need to redraw entire frame after suspending. Hide
+   A non-nil value is useful if the terminal can automatically preserve
+   Emacs’s frame display when you reenter Emacs.
+   It is up to you to set this variable if your terminal can do that.
+
+Hide Overline Margin: 2
+   [ State ]: STANDARD.
+   Space between overline and text, in pixels. Hide
+   The default value is 2: the height of the overline (1 pixel) plus 1 pixel
+   margin to the character height.
+
+Hide Ring Bell Function: [Value Menu] Default
+   [ State ]: STANDARD.
+   Non-nil means call this function to ring the bell. Hide
+   The function should accept no arguments.
+
+Hide Scalable Fonts Allowed: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Allowed scalable fonts. Hide
+   A value of nil means don’t allow any scalable fonts.
+   A value of t means allow any scalable font.
+   Otherwise, value must be a list of regular expressions.  A font may be
+   scaled if its name matches a regular expression in the list.
+   Note that if value is nil, a scalable font might still be used, if no
+   other font of the appropriate family and registry is available.
+
+Hide Selective Display Ellipses: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   Non-nil means display ... on previous line when a line is invisible. Hide
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Truncate Lines: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means do not display continuation lines. Hide
+   Instead, give each line of text just one screen line.
+   
+   Note that this is overridden by the variable
+   ‘truncate-partial-width-windows’ if that variable is non-nil
+   and this buffer is not full-frame width.
+   
+   Minibuffers set this variable to nil.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+Hide Truncate Partial Width Windows: [Value Menu] Truncate if narrower than: 50
+   [ State ]: STANDARD.
+   Non-nil means truncate lines in windows narrower than the frame. Hide
+   For an integer value, truncate lines in each window narrower than the
+   full frame width, provided the total window width in column units is less
+   than that integer; otherwise, respect the value of ‘truncate-lines’.
+   The total width of the window is as returned by ‘window-total-width’, it
+   includes the fringes, the continuation and truncation glyphs, the
+   display margins (if any), and the scroll bar
+   
+   For any other non-nil value, truncate lines in all windows that do
+   not span the full frame width.
+   
+   A value of nil means to respect the value of ‘truncate-lines’.
+   
+   If ‘word-wrap’ is enabled, you might want to reduce this.
+
+Hide Tty Menu Open Use Tmm: [Value Menu] F10 drops down TTY menus
+   [ State ]: STANDARD.
+   If non-nil, <f10> on a TTY will invoke ‘tmm-menubar’. Hide
+   
+   If nil, <f10> will drop down the menu corresponding to the
+   first (leftmost) menu-bar item; you can select other items by typing
+   C-f, C-b, <right> and <left>.
+
+Hide Underline Minimum Offset: 1
+   [ State ]: STANDARD.
+   Minimum distance between baseline and underline. Hide
+   This can improve legibility of underlined text at small font sizes,
+   particularly when using variable ‘x-use-underline-position-properties’
+   with fonts that specify an UNDERLINE_POSITION relatively close to the
+   baseline.  The default value is 1.
+
+Hide Visible Bell: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means try to flash the frame to represent a bell. Hide
+   
+   See also ‘ring-bell-function’.
+
+Hide Visual Order Cursor Movement: [Value Menu] Logical-order cursor movement
+   [ State ]: STANDARD.
+   If non-nil, moving cursor with arrow keys follows the visual order. Hide
+   
+   When this is non-nil, <right> will move to the character that is
+   to the right of point on display, and <left> will move to the left,
+   disregarding the surrounding bidirectional context.  Depending on the
+   bidirectional context of the surrounding characters, this can move point
+   many buffer positions away.
+   
+   When the text is entirely left-to-right, logical-order and visual-order
+   cursor movements produce identical results.
+
+Hide Word Wrap: [Toggle]  off (nil)
+   [ State ]: STANDARD.
+   Non-nil means to use word-wrapping for continuation lines. Hide
+   When word-wrapping is on, continuation lines are wrapped at the space
+   or tab character nearest to the right window edge.
+   If nil, continuation lines are wrapped at the right screen edge.
+   
+   This variable has no effect if long lines are truncated (see
+   ‘truncate-lines’ and ‘truncate-partial-width-windows’).  If you use
+   word-wrapping, you might want to reduce the value of
+   ‘truncate-partial-width-windows’, since wrapping can make text readable
+   in narrower windows.
+   
+   Instead of setting this variable directly, most users should use
+   Visual Line mode .  Visual Line mode, when enabled, sets ‘word-wrap’
+   to t, and additionally redefines simple editing commands to act on
+   visual lines rather than logical lines.  See the documentation of
+   ‘visual-line-mode’.
+   
+   This variable automatically becomes buffer-local when set outside Custom.
+   However, setting it through Custom sets the default value.
+
+
+
+Entered on [2017-05-17 Wed 13:56]
