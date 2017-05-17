@@ -1,0 +1,11 @@
+#+TITLE Starting and Stopping Emacs
+
+** Starting Emacs
+
+To start =emacs=, simply type =emacs= when you are at any line which begins =f123@f123=.
+
+** Stopping Emacs
+
+Any time you want to stop =emacs= and return to =f123@f123=, type =c-x c-c=. You will prompted to type =yes= if you want to stop =emacs= or =no= if you want to continue to work in =emacs=.
+
+If any files are still open and work is unsaved, you will be prompted to decide whether to keep your changes. Type =y= to save your work or =n= to discard it.

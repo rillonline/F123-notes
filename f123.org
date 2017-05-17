@@ -510,6 +510,11 @@ This is term emulation mode. You can use text-based browsers, editors or mail pr
       relative paths in this file will be taken as relative to
       ‘org-directory’.
 Groups: [Org Capture] [Org Refile]
+** TODO Lessons
+
+I am putting the micro lessons in a directory for =F123-notes= repository so that are saved. They are not currently numbered so that I can think about how I want to organize them.
+   
+   [[file:~/F123-notes/f123.org]]
 * 2017
 ** 2017-05 May
 *** 2017-05-12 Friday
@@ -524,6 +529,13 @@ Why is this a level 4 in the subtree. I don't see anywhere to define this.
    Entered on [2017-05-14 Sun 16:10]
   
      [[file:~/org/f123.org::*Subtree%20Level%20:question(q)][Subtree Level :question(q)]]
+*** 2017-05-16 Tuesday
+**** require
+
+=ox-texinfo= must be specified as required. This is not a variable so it must not be part of the =custom-set-variables= function. I am choosing to put what is required in =init.el=.
+Entered on [2017-05-16 Tue 21:40]
+  
+  [[file:~/F123-notes/lessons]]
 * 2017
 ** 2017-05 May
 *** 2017-05-12 Friday
