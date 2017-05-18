@@ -26,3 +26,7 @@ Going over how to execute {{{emacs}}} commands.
 *  Acknowledgements
 
 *  Resources
+*  Glossary
+
+   #+INCLUDE: glossary.org
+

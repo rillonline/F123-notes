@@ -1,0 +1,9 @@
++ boot :: restart a computer
++ buffer :: its definition
++  console :: What is the console.
++ Emacs :: its name and possibly a bit of history
++ file :: a brief definition
++  prompt :: What is a command line prompt.
++ raspberry pi :: a credit card-sized computer
++  speakup :: console screen reader or whatever
+
