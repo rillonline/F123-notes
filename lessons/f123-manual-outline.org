@@ -1,0 +1,28 @@
+
+#+TITLE: F123e User's Guide
+#+AUTHOR: Rill, Mike and Fernando
+#+OPTIONS: toc:t f:t 
+#+MACRO: emacs =Emacs=
+
+
+*  About F123
+
+Say a little bit about F12, its aims and goals3.
+
+*  Introduction
+
+Say something about this document.
+
+* Don't Skip This Chapter
+
+Going over how to execute {{{emacs}}} commands.
+
+* Micro Lessons 
+
+   #+INCLUDE: starting-and-stopping-emacs.org
+
+*  Final Thoughts
+
+*  Acknowledgements
+
+*  Resources
