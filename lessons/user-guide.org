@@ -1,6 +1,6 @@
-#+TEXINFO_DIR_CATEGORY: Emacs
-#+TEXINFO_DIR_TITLE: F123e
-#+TEXINFO_DIR_DESC: F123e distribution for the blind and visually impaired
+#+TEXINFO_DIR_CATEGORY: Accessibility
+#+TEXINFO_DIR_TITLE: F123e User Guide
+#+TEXINFO_DIR_DESC: F123e ArchLinux-based distribution for the blind and visually impaired
 
 
 #+TITLE: F123e User Guide
