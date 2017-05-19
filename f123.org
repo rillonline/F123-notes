@@ -536,6 +536,224 @@ Why is this a level 4 in the subtree. I don't see anywhere to define this.
 Entered on [2017-05-16 Tue 21:40]
   
   [[file:~/F123-notes/lessons]]
+*** 2017-05-17 Wednesday
+**** Package Variables
+
+
+Parent groups: [Applications]
+
+Package group: Manager for Emacs Lisp packages.
+      [ State ]: something in this group has been set and saved.
+   
+Hide Package Archive Priorities:
+[INS]
+   [ State ]: STANDARD.
+   An alist of priorities for packages. Hide
+   
+   Each element has the form (ARCHIVE-ID . PRIORITY).
+   
+   When installing packages, the package with the highest version
+   number from the archive with the highest priority is
+   selected.  When higher versions are available from archives with
+   lower priorities, the user has to select those manually.
+   
+   Archives not in this list have the priority 0.
+   
+   See also ‘package-menu-hide-low-priority’.
+
+Hide Package Archives:
+[INS] [DEL] Archive name: gnu
+            URL or directory name: http://elpa.gnu.org/packages/
+[INS]
+   [ State ]: STANDARD.
+   An alist of archives from which to fetch. Hide
+   The default value points to the GNU Emacs package repository.
+   
+   Each element has the form (ID . LOCATION).
+    ID is an archive name, as a string.
+    LOCATION specifies the base location for the archive.
+     If it starts with "http:", it is treated as a HTTP URL;
+     otherwise it should be an absolute directory name.
+     (Other types of URL are currently not supported.)
+   
+   Only add locations that you trust, since fetching and installing
+   a package can run arbitrary code.
+
+Hide Package Check Signature: [Value Menu] allow-unsigned
+   [ State ]: STANDARD.
+   Non-nil means to check package signatures when installing. Hide
+   The value ‘allow-unsigned’ means to still install a package even if
+   it is unsigned.
+   
+   This also applies to the "archive-contents" file that lists the
+   contents of the archive.
+
+Show Package Description face: [sample]
+   Face used on package description summaries in the package menu.
+
+Hide Package Directory List:
+[INS] [DEL] Directory: /usr/share/emacs/25.2/site-lisp/elpa
+[INS] [DEL] Directory: /usr/share/emacs/site-lisp/elpa
+[INS]
+   [ State ]: STANDARD.
+   List of additional directories containing Emacs Lisp packages. Hide
+   Each directory name should be absolute.
+   
+   These directories contain packages intended for system-wide; in
+   contrast, ‘package-user-dir’ contains packages for personal use.
+
+Hide Package Enable At Startup: [Toggle]  on (non-nil)
+   [ State ]: SAVED and set.
+   Whether to activate installed packages when Emacs starts. Hide
+   If non-nil, packages are activated after reading the init file
+   and before ‘after-init-hook’.  Activation is not done if
+   ‘user-init-file’ is nil (e.g. Emacs was started with "-q").
+   
+   Even if the value is nil, you can type M-x package-initialize to
+   activate the package system at any time.
+
+Show Package Help Section Name face: [sample]
+   Face used on section names in package description buffers.
+
+Hide Package Hidden Regexps:
+[INS]
+   [ State ]: STANDARD.
+   List of regexps matching the name of packages to hide. Hide
+   If the name of a package matches any of these regexps it is
+   omitted from the package menu.  To toggle this, type M-x package-menu-toggle-hiding.
+   
+   Values can be interactively added to this list by typing
+   M-x package-menu-hide-package on a package
+
+Hide Package Load List:
+[INS] [DEL] Choice: [Value Menu] all
+[INS]
+   [ State ]: STANDARD.
+   List of packages for ‘package-initialize’ to load. Hide
+   Each element in this list should be a list (NAME VERSION), or the
+   symbol ‘all’.  The symbol ‘all’ says to load the latest installed
+   versions of all packages not specified by other elements.
+   
+   For an element (NAME VERSION), NAME is a package name (a symbol).
+   VERSION should be t, a string, or nil.
+   If VERSION is t, the most recent version is activated.
+   If VERSION is a string, only that version is ever loaded.
+    Any other version, even if newer, is silently ignored.
+    Hence, the package is "held" at that version.
+   If VERSION is nil, the package is not loaded (it is "disabled").
+
+Hide Package Menu Async: [Toggle]  on (non-nil)
+   [ State ]: STANDARD.
+   If non-nil, package-menu will use async operations when possible. Hide
+   Currently, only the refreshing of archive contents supports
+   asynchronous operations.  Package transactions are still done
+   synchronously.
+
+Hide Package Menu Hide Low Priority: [Value Menu] Don’t hide anything
+   [ State ]: SAVED and set.
+   If non-nil, hide low priority packages from the packages menu. Hide
+   A package is considered low priority if there’s another version
+   of it available such that:
+       (a) the archive of the other package is higher priority than
+       this one, as per ‘package-archive-priorities’;
+     or
+       (b) they both have the same archive priority but the other
+       package has a higher version number.
+   
+   This variable has three possible values:
+       nil: no packages are hidden;
+       ‘archive’: only criterion (a) is used;
+       t: both criteria are used.
+   
+   This variable has no effect if ‘package-menu--hide-packages’ is
+   nil, so it can be toggled with  (.
+
+Show Package Name face: [sample]
+   Face used on package names in the package menu.
+
+Hide Package Pinned Packages:
+[INS]
+   [ State ]: STANDARD.
+   An alist of packages that are pinned to specific archives. Hide
+   This can be useful if you have multiple package archives enabled,
+   and want to control which archive a given package gets installed from.
+   
+   Each element of the alist has the form (PACKAGE . ARCHIVE), where:
+    PACKAGE is a symbol representing a package
+    ARCHIVE is a string representing an archive (it should be the car of
+   an element in ‘package-archives’, e.g. "gnu").
+   
+   Adding an entry to this variable means that only ARCHIVE will be
+   considered as a source for PACKAGE.  If other archives provide PACKAGE,
+   they are ignored (for this package).  If ARCHIVE does not contain PACKAGE,
+   the package will be unavailable.
+
+Hide Package Selected Packages:
+[INS] [DEL] Symbol: muse
+[INS] [DEL] Symbol: web-server
+[INS] [DEL] Symbol: csv-mode
+[INS] [DEL] Symbol: company
+[INS]
+   [ State ]: SAVED and set.
+   Store here packages installed explicitly by user. Hide
+   This variable is fed automatically by Emacs when installing a new package.
+   This variable is used by ‘package-autoremove’ to decide
+   which packages are no longer needed.
+   You can use it to (re)install packages on other machines
+   by running ‘package-install-selected-packages’.
+   
+   To check if a package is contained in this list here, use
+   ‘package--user-selected-p’, as it may populate the variable with
+   a sane initial value.
+
+Show Package Status Avail Obso face: [sample]
+   Face used on the status and version of avail-obso packages.
+
+Show Package Status Available face: [sample]
+   Face used on the status and version of available packages.
+
+Show Package Status Built In face: [sample]
+   Face used on the status and version of built-in packages.
+
+Show Package Status Dependency face: [sample]
+   Face used on the status and version of dependency packages.
+
+Show Package Status Disabled face: [sample]
+   Face used on the status and version of disabled packages.
+
+Show Package Status External face: [sample]
+   Face used on the status and version of external packages.
+
+Show Package Status Held face: [sample]
+   Face used on the status and version of held packages.
+
+Show Package Status Incompat face: [sample]
+   Face used on the status and version of incompat packages.
+
+Show Package Status Installed face: [sample]
+   Face used on the status and version of installed packages.
+
+Show Package Status New face: [sample]
+   Face used on the status and version of new packages.
+
+Show Package Status Unsigned face: [sample]
+   Face used on the status and version of unsigned packages.
+
+Hide Package Unsigned Archives:
+[INS]
+   [ State ]: STANDARD.
+   List of archives where we do not check for package signatures.
+
+Hide Package User Dir: ~/.emacs.d/elpa
+   [ State ]: STANDARD.
+   Directory containing the user’s Emacs Lisp packages. Hide
+   The directory name should be absolute.
+   Apart from this directory, Emacs also looks for system-wide
+   packages in ‘package-directory-list’.
+
+
+
+Entered on [2017-05-17 Wed 18:28]
 * 2017
 ** 2017-05 May
 *** 2017-05-12 Friday

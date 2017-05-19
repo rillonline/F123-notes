@@ -1,0 +1,9 @@
+A list of English language books and web pages which may be helpful to you.
+
++ Emacs wiki :: [[http://www.emacswiki.org/]]
++ Emacs home page  :: ???
++ Learning GNU Emacs :: ???
++ raspberry pi secret agent book :: ???
++ raspberry pi home page :: [[raspberry%20pi][[[https://raspberrypi.org/]]
++ raspberry vihome page :: [[http://raspberryvi.org/]]
++ raspberry vi mailing list :: ???

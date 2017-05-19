@@ -13,11 +13,12 @@ Say a little bit about F12, its aims and goals3.
 
 Say something about this document.
 
+*   What Is A Raspberry Pi?
 * Don't Skip This Chapter
 
 Going over how to execute {{{emacs}}} commands.
 
-* Micro Lessons 
+* Micro Lessonsfor Emacs 
 
    #+INCLUDE: starting-and-stopping-emacs.org
 
@@ -26,6 +27,9 @@ Going over how to execute {{{emacs}}} commands.
 *  Acknowledgements
 
 *  Resources
+
+   #+INCLUDE: resources.org
+
 *  Glossary
 
    #+INCLUDE: glossary.org
