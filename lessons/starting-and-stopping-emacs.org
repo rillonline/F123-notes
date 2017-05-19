@@ -7,6 +7,6 @@ To start =Emacs=, simply type =emacs= at any prompt.
 
 ** Stopping Emacs
 
-Any time you want to stop =Emacs=, type =c-x c-c=. You will prompted to type =yes= if you want to stop =Emacs= or =no= if you want to continue to work in =Emacs=.
+Any time you want to stop =Emacs=, type =c-x c-c=. You will be prompted to type =yes= if you want to stop =Emacs= or =no= if you want to continue to work in =Emacs=.
 
 If any files are still open and work is unsaved, you will be prompted to decide whether to keep your changes. Type =y= to save your work or =n= to discard it.
