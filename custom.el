@@ -3,6 +3,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(allout-auto-activation t)
+ '(appt-audible t)
+ '(appt-display-format (quote window))
+ '(appt-display-interval 5)
+ '(appt-message-warning-time 15)
+ '(appt-warning-time-regexp "warningtime \\([0-9]+\\)")
  '(csv-align-style (quote auto))
  '(dectalk-default-speech-rate 250)
  '(dtk-allcaps-beep nil t)
@@ -15,7 +21,7 @@
  '(emacspeak-character-echo t)
  '(emacspeak-ispell-max-choices 20)
  '(emacspeak-play-emacspeak-startup-icon nil)
- '(emacspeak-speak-tooltips t)
+ '(emacspeak-speak-tooltips nil)
  '(espeak-default-speech-rate 265)
  '(git-committer-email "rillw@icloud.com")
  '(git-committer-name "Rill Online")
@@ -37,26 +43,23 @@ Entered on %U
   %i
   %a")
      ("j" "Journal" entry
-      (file+datetree "~/Documentos/journal.org")
+      (file+datetree "journal.org")
       "* %?
-Entered on %U
-  %i
-  %a")
-          ("r" "rill's notes" entry
-      (file+datetree "~/Documentos/notes.org")
-      "* %?
-Entered on %U
-  %i
-  %a"))))
+      Entered on %U
+      %i)
+     (" r " " notes " entry
+      (file+datetree " notes\.org ")
+      " * %\? Entered on %U %i))))
  '(org-default-notes-file "f123.org")
- '(org-directory "~/org/")
- '(org-export-backends (quote (ascii html icalendar latex man md org texinfo)))
+ '(org-directory "~/Documentos/")
+ '(org-export-backends (quote (ascii html icalendar latex man md odt org texinfo)))
  '(org-html-postamble nil)
  '(org-html-preamble nil)
  '(org-md-headline-style (quote setext))
+ '(org-use-fast-todo-selection t)
  '(package-enable-at-startup t)
  '(package-menu-hide-low-priority nil)
- '(package-selected-packages (quote (muse web-server csv-mode company org)))
+ '(package-selected-packages (quote (org-plus-contrib muse web-server csv-mode company)))
  '(remember-notes-initial-major-mode (quote text-mode))
  '(save-place-limit nil)
  '(save-place-mode t nil (saveplace))
