@@ -9,8 +9,12 @@
  '(appt-display-interval 5)
  '(appt-message-warning-time 15)
  '(appt-warning-time-regexp "warningtime \\([0-9]+\\)")
+ '(calendar-view-diary-initially-flag t)
  '(csv-align-style (quote auto))
  '(dectalk-default-speech-rate 250)
+ '(diary-file "~/Documentos/diario")
+ '(diary-mail-addr "")
+ '(diary-number-of-entries 1)
  '(dtk-allcaps-beep nil t)
  '(dtk-capitalize t t)
  '(dtk-speech-rate-base 150)
@@ -27,9 +31,11 @@
  '(git-committer-name "Rill Online")
  '(git-show-uptodate nil)
  '(inhibit-startup-screen t)
+ '(initial-buffer-choice "~/.emacs.d/welcome.txt")
  '(ispell-dictionary nil)
  '(ispell-look-command "/usr/bin/look")
- '(org-capture-templates
+ '(org-default-notes-file "f123.org")
+  '(org-capture-templates
    (quote
     (("t" "Todo" entry
       (file+headline "/home/rill/F123-notes/f123.org" "Tasks")
@@ -47,12 +53,12 @@ Entered on %U
       "* %?
       Entered on %U
       %i)
-     (" r " " notes " entry
-      (file+datetree " notes\.org ")
+     (" r " " rills notes " entry
+      (file+datetree )
       " * %\? Entered on %U %i))))
- '(org-default-notes-file "f123.org")
  '(org-directory "~/Documentos/")
  '(org-export-backends (quote (ascii html icalendar latex man md odt org texinfo)))
+ '(org-export-initial-scope (quote buffer))
  '(org-html-postamble nil)
  '(org-html-preamble nil)
  '(org-md-headline-style (quote setext))

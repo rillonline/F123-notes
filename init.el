@@ -39,7 +39,7 @@
 ;;; (load-library "capture-prepare")
  (put 'eval-expression 'disabled nil)
  (setq line-number-mode nil)
- (setq inhibit-splash-screen t)
+;;; (setq inhibit-splash-screen t)
  (defalias 'word-count 'count-words)
 
 ;;; for org-capture
