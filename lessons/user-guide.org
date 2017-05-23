@@ -6,7 +6,7 @@
 #+TITLE: F123e User Guide
 #+AUTHOR: Rill, Mike and Fernando
 #+OPTIONS: toc:t f:t 
-#+MACRO: emacs =Emacs=
+#+MACRO: emacs ~Emacs~
 
 
 *  About F123
@@ -25,6 +25,9 @@ Going over how to execute {{{emacs}}} commands.
 * Micro Lessonsfor Emacs 
 
    #+INCLUDE: starting-and-stopping-emacs.org
+   #+INCLUDE: getting-started-with-calendar.org
+
+   #+INCLUDE: navigating-the-calendar.org
 
 *  Final Thoughts
 

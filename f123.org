@@ -754,6 +754,36 @@ Hide Package User Dir: ~/.emacs.d/elpa
 
 
 Entered on [2017-05-17 Wed 18:28]
+*** 2017-05-20 Saturday
+**** Calendar and Diary
+
+Here's what I know so far:
+
+I can change the name and location of the diary file: diary-file.
+
+I have been less successful changing the month names and I don't know where the day names are stored.
+
+I don't know where the default date format is stored.
+
+European date format should be the default except for people living in the United States.
+
+I don't kno how to see the diary entries from the calendar. This is pretty important.
+
+I think I read that the diary can be displayed by default when emacs is started. That sounds good to me.
+   Entered on [2017-05-20 Sat 15:48]
+  
+     [[<2017-05-20 Sat>]]
+**** More on the Calendar
+
+Longitutde and Lattitude must be set for sunrise and sunset to be calculated.
+
+The phases of the moon work without doing anything.
+   Entered on [2017-05-20 Sat 15:52]
+*** 2017-05-21 Sunday
+**** Personal Note to be disgarded
+
+I don't get why =r= is not working. It seems like the final specification in any list doesn't work.
+   Entered on [2017-05-21 Sun 13:56]
 * 2017
 ** 2017-05 May
 *** 2017-05-12 Friday

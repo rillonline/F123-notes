@@ -1,0 +1,59 @@
+#+MACRO: emacs EMACS
+**  Getting Started with the Emacs Calendar
+
+This is one way of keeping track of appointments and due dates.
+
+*** Opening the Calendar
+
+Open the calendar.
+
+   ~m-x calendar~
+
+The calendar buffer opens. This is a read-only buffer. The calendar is
+a grid of numbered days.
+*** Navigating the Calendar
+
+You can navigate this buffer with your cursor keys or with {{{emacs}}}
+navigation commands.
+
+   For example, ~c-p~ moves your focus to the previous week on the
+   same day of the week while ~c-n~ moves one week ahead on the same
+   day of the week. (see 
+[[Navigating the Calendar][Navigating the Calendar]]).
+
+*** Reading Today's Appointments and Due Dates
+
+Once your calendar is open, you can view today's events by switching
+to the buffer ~% *Fancy Diary Ent...~.
+
+*** Entering Appointments and Due Dates
+
+Your appointments and due dates are kept in a diary file. You can use
+{{{emacs}}} calendar to add new ones.
+
+Place the cursor on the appropriate date. Type the appropriate two
+letter code.
+
+| Code | Result               |
+|------+----------------------|
+| id   | one time appointment |
+| iw   | weekly appointment   |
+| im   | monthly appointment  |
+| iy   | yearly appointment   |
+| ia   | anniversary          |
+
+Once you type the two letter code, your diary file opens and you can type contents of your appointment or due date beginning with the time if necessary.
+
+If you examine this file, over time, you will see it is out-of-order.
+Don't worry about this. The calendar will take care of it. {{{emacs}}}
+will be able to figure out where your appointments and due dates are.
+
+
+
+
+*** A Fancy Display of Your Calendar
+
+
+
+
+
